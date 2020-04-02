@@ -51,14 +51,14 @@ cd $OPENWRT_PATH
 echo ""
 echo "Configuring ..."
 # Modify default IP
-sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
-if [ -n $OPENWRT_ROOT_PASSWORD ]; then
-  echo "WARN: root password is changed from your secret, make sure you add 'OPENWRT_ROOT_PASSWORD' secret"
+#if [ -n $OPENWRT_ROOT_PASSWORD ]; then
+#  echo "WARN: root password is changed from your secret, make sure you add 'OPENWRT_ROOT_PASSWORD' secret"
   # Modify password of root if present (encoded password)
   # For example: passwot = $1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.
-  sed -i "s|root::0:0:99999:7:::|root:$OPENWRT_ROOT_PASSWORD:0:0:99999:7:::|g" package/base-files/files/etc/shadow
-fi
+#  sed -i "s|root::0:0:99999:7:::|root:$OPENWRT_ROOT_PASSWORD:0:0:99999:7:::|g" package/base-files/files/etc/shadow
+#fi
 
 # Modify default theme
 # sed -i 's/bootstrap/argon/g' package/feeds/luci/luci-base/root/etc/config/luci
